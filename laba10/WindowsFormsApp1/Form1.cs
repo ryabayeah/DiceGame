@@ -13,25 +13,24 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         double[] freqPlayer = { 0.16, 0.16, 0.16, 0.17, 0.17, 0.18};
-        double[] freqComputer = { 0.1, 0.1, 0.1, 0.2, 0.25, 0.25 };
+        double[] freqComputer = { 0.1, 0.15, 0.15, 0.2, 0.2, 0.2 };
         int rollNum = 0;
         double cScore = 0, pScore = 0;
+        Random rand = new Random();
 
         public Form1()
         {
             InitializeComponent();
-            
         }
 
         private double[] RollDice(double[] aboba)
         {
-            Random rand = new Random();
-            var lenght = aboba.Length;
-            double[] stats = new double[lenght];
-            for (int i = 0; i < lenght; i++)
+            double[] stats = new double[3];
+
+            for (int i = 0; i < 3; i++)
             {
                 var q = (double)rand.NextDouble();
-                for (int j = 0; j < lenght; j++)
+                for (int j = 0; j < aboba.Length; j++)
                 {
                      q -= aboba[j];
                     if (q <= 0)
@@ -89,7 +88,7 @@ namespace WindowsFormsApp1
                     CCube3.Text = Computer[2] + "";
                     rollNum = 0;
                     lWinner.Text = CalculateWinner();
-                    break;      
+                    break;
             }
         }
     }
